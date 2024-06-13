@@ -1,6 +1,6 @@
 defaults:
   - model: dinov2
-  - dataset: dreambooth_sstr
+  - dataset: simple_prompts
   - optim: adamw
   - loss_fn: cross_entropy
 

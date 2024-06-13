@@ -1,7 +1,4 @@
 # Cheese Classification challenge
-This codebase allows you to jumpstart the INF473V challenge.
-The goal of this channel is to create a cheese classifier without any real training data.
-You will need to create your own training data from tools such as Stable Diffusion, SD-XL, etc...
 
 ## Instalation
 
@@ -16,15 +13,51 @@ conda create -n cheese_challenge python=3.10
 conda activate cheese_challenge
 pip install -r requirements.txt
 ```
+Install dependencies for the OCR:
+```
+pip install fuzzywuzzy
+pip install azure-cognitiveservices-vision-computervision msrest spacy
+python -m spacy download en_core_web_md
+```
+Install dependencies for dreambooth:
+```
+conda create -n peft python=3.10
+conda activate peft
+cd peft/examples/lora_dreambooth
+pip install -r requirements.txt
+pip install git+https://github.com/huggingface/peft
+```
 
 Download the data from kaggle and copy them in the dataset folder
-The data should be organized as follow: ```dataset/val```, ```dataset/test```. then the generated train sets will go to ```dataset/train/your_new_train_set```
+The data should be organized as follow: ```dataset/val```, ```dataset/test```.
 
 ## Using this codebase
-This codebase is centered around 2 components: generating your training data and training your model.
-Both rely on a config management library called hydra. It allow you to have modular code where you can easily swap methods, hparams, etc
+
+### Fine-tuning
+
+Go in the folder lora_dreambooth:
+```
+cd peft/examples/lora_dreambooth
+```
+
+To fine-tune Stable Diffusion with DreamBooth on each cheese you can run
+```
+python exec_train.py
+```
+THe models will be saved in the folder dreambooth_models.
+
+### Generating images
+
+To generate cheese images with those models you can do 
+```
+python exec_prompt.py
+```
+The prompts used come from the folder Prompts.
+The images are saved in the folder classifier_dataset.
 
 ### Training
+
+Go back in the folder cheese_classification_challenge.
 
 To train your model you can run 
 
@@ -40,24 +73,17 @@ to change experiment name, you can do
 python train.py experiment_name=new_experiment_name
 ```
 
-### Generating datasets
-You can generate datasets with the following command
-
-```
-python generate.py
-```
-
-If you want to create a new dataset generator method, write a method that inherits from `data.dataset_generators.base.DatasetGenerator` and create a new config file in `configs/generate/dataset_generator`.
-You can then run
-
-```
-python generate.py dataset_generator=your_new_generator
-```
-
 ## Create submition
-To create a submition file, you can run 
+
+To create a submition file (without the OCR), you can run 
 ```
 python create_submition.py experiment_name="name_of_the_exp_you_want_to_score" model=config_of_the_exp
 ```
 
 Make sure to specify the name of the checkpoint you want to score and to have the right model config
+
+
+To use the OCR for the submission you can run 
+```
+python create_submition_OCR.py
+```

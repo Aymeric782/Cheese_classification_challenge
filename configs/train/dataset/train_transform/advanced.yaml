@@ -1,0 +1,21 @@
+_target_: torchvision.transforms.Compose
+transforms:
+  - _target_: torchvision.transforms.Resize
+    size: [224, 224]
+  - _target_: torchvision.transforms.RandomHorizontalFlip
+    p: 0.5
+  - _target_: torchvision.transforms.ColorJitter
+    brightness: 0.2  # luminosité
+    contrast: 0.2  # contraste
+    saturation: 0.2  # saturation
+    hue: 0.1  # teinte
+  - _target_: torchvision.transforms.RandomRotation
+    degrees: 15  # angle max
+  - _target_: torchvision.transforms.RandomResizedCrop
+    size: [224, 224]
+    scale: [0.8, 1.0]
+    ratio: [0.75, 1.333]
+  - _target_: torchvision.transforms.ToTensor
+  - _target_: torchvision.transforms.Normalize
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]

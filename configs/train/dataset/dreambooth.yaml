@@ -1,0 +1,11 @@
+defaults:
+  - train_transform: advanced
+  - test_transform: simple
+
+name: dreambooth
+num_classes: 37
+batch_size: 128
+num_workers: 8
+train_path: ${root_dir}/peft/examples/lora_dreambooth/classifier_dataset
+real_images_val_path: ${data_dir}/val
+test_path: ${data_dir}/test

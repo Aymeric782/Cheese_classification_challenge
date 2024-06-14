@@ -4,7 +4,7 @@
 
 Cloning the repo:
 ```
-git clone git@github.com:Aymeric782/Cheese_classification_challenge.git
+git clone https://github.com/Aymeric782/Cheese_classification_challenge.git
 cd cheese_classification_challenge
 ```
 Install dependencies:
@@ -52,7 +52,7 @@ The models will be saved in the folder ```dreambooth_models```.
 
 ### Generating images
 
-To generate cheese images with those models you can do (still in the anaconda environment peft)
+To generate cheese images with those models you can do (still in the anaconda environment ```peft```)
 ```
 python exec_prompt.py
 ```
@@ -87,7 +87,7 @@ python train.py experiment_name=new_experiment_name
 
 ## Create submition
 
-To create a submission file with the OCR, you can run (in the anaconda environment cheese_challenge)
+To create a submission file with the OCR, you can run (in the anaconda environment ```cheese_challenge```)
 ```
 python create_submition_OCR.py
 ```

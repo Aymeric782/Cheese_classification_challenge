@@ -85,9 +85,9 @@ def ocr(image_path):
                 fromage_identifie = fromage
 
     if fromage_identifie=="fourme" or fromage_identifie=="ambert":
-        fromage_identifie="fourme d'ambert"
+        fromage_identifie="fourme d’ambert"
     if fromage_identifie=="bûche":
-        fromage_identifie="buchette de chevre"
+        fromage_identifie="bûchette de chèvre"
     if fromage_identifie and similarity_max >= 60:
         return True, fromage_identifie
     else:

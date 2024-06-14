@@ -39,6 +39,10 @@ Go in the folder ```peft/examples/lora_dreambooth```:
 ```
 cd peft/examples/lora_dreambooth
 ```
+Activate the right anaconda environment:
+```
+conda activate peft
+```
 
 To fine-tune Stable Diffusion with DreamBooth on each cheese you can run
 ```
@@ -48,7 +52,7 @@ The models will be saved in the folder ```dreambooth_models```.
 
 ### Generating images
 
-To generate cheese images with those models you can do 
+To generate cheese images with those models you can do (still in the anaconda environment peft)
 ```
 python exec_prompt.py
 ```
@@ -61,6 +65,11 @@ The images are saved in the folder ```classifier_dataset```.
 ### Training
 
 Go back in the folder ```cheese_classification_challenge```.
+
+Activate the relevant anaconda environment:
+```
+conda activate cheese_challenge
+```
 
 To train your model you can run 
 
@@ -78,7 +87,7 @@ python train.py experiment_name=new_experiment_name
 
 ## Create submition
 
-To create a submission file with the OCR, you can run 
+To create a submission file with the OCR, you can run (in the anaconda environment cheese_challenge)
 ```
 python create_submition_OCR.py
 ```

@@ -1,10 +1,10 @@
 # Cheese Classification challenge
 
-## Instalation
+## Installation
 
 Cloning the repo:
 ```
-git clone git@github.com:nicolas-dufour/cheese_classification_challenge.git
+git clone git@github.com:Aymeric782/Cheese_classification_challenge.git
 cd cheese_classification_challenge
 ```
 Install dependencies:
@@ -21,9 +21,9 @@ python -m spacy download en_core_web_md
 ```
 Install dependencies for dreambooth:
 ```
+cd peft/examples/lora_dreambooth
 conda create -n peft python=3.10
 conda activate peft
-cd peft/examples/lora_dreambooth
 pip install -r requirements.txt
 pip install git+https://github.com/huggingface/peft
 ```
@@ -35,7 +35,7 @@ The data should be organized as follow: ```dataset/val```, ```dataset/test```.
 
 ### Fine-tuning
 
-Go in the folder lora_dreambooth:
+Go in the folder ```peft/examples/lora_dreambooth```:
 ```
 cd peft/examples/lora_dreambooth
 ```
@@ -44,7 +44,7 @@ To fine-tune Stable Diffusion with DreamBooth on each cheese you can run
 ```
 python exec_train.py
 ```
-THe models will be saved in the folder dreambooth_models.
+The models will be saved in the folder ```dreambooth_models```.
 
 ### Generating images
 
@@ -52,12 +52,15 @@ To generate cheese images with those models you can do
 ```
 python exec_prompt.py
 ```
-The prompts used come from the folder Prompts.
-The images are saved in the folder classifier_dataset.
+The prompts used come from the folder ```Prompts```.
+
+They were generated using the script ```Generation_prompts_caracteristiques.py``` in the same folder.
+
+The images are saved in the folder ```classifier_dataset```.
 
 ### Training
 
-Go back in the folder cheese_classification_challenge.
+Go back in the folder ```cheese_classification_challenge```.
 
 To train your model you can run 
 
@@ -75,15 +78,13 @@ python train.py experiment_name=new_experiment_name
 
 ## Create submition
 
-To create a submition file (without the OCR), you can run 
-```
-python create_submition.py experiment_name="name_of_the_exp_you_want_to_score" model=config_of_the_exp
-```
-
-Make sure to specify the name of the checkpoint you want to score and to have the right model config
-
-
-To use the OCR for the submission you can run 
+To create a submission file with the OCR, you can run 
 ```
 python create_submition_OCR.py
 ```
+
+If you want to create a submission file without the OCR, you can run 
+```
+python create_submition_OCR.py experiment_name="name_of_the_exp_you_want_to_score" model=config_of_the_exp
+```
+Make sure to specify the name of the checkpoint you want to score and to have the right model config

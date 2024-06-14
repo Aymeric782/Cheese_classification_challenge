@@ -54,12 +54,12 @@ def ocr(image_path):
         
     # Liste des noms de fromages possibles
     fromages_possibles = [
-        "brie de melun", "camembert", "epoisses", "fourme d'ambert", "fourme", "ambert", "bûche", "raclette",
-        "morbierr", "saint-nectaire", "pouligny saint- pierre", "roquefort", "comte", "pecorino", "neufchatel", "cheddar", "buchette de chevre", "parmesan",
-        "saint- felicien", "mont d'or", "stilton", "scarmoza", "cabecou", "beaufort",
+        "brie de melun", "camembert", "epoisses", "fourme d’ambert", "fourme", "ambert", "bûche", "raclette",
+        "morbierr", "saint-nectaire", "pouligny saint- pierre", "roquefort", "comté", "pecorino", "neufchatel", "cheddar", "bûchette de chèvre", "parmesan",
+        "saint- felicien", "mont d’or", "stilton", "scarmoza", "cabecou", "beaufort",
         "munster", "chabichou", "tomme de vache", "reblochon", "emmental", "feta",
-        "ossau- iraty", "mimolette", "maroilles", "gruyere", "motheais", "vacherin",
-        "mozzarella", "tete de moines", "fromage frais", "chevre"
+        "ossau- iraty", "mimolette", "maroilles", "gruyère", "motheais", "vacherin",
+        "mozzarella", "tête de moines", "fromage frais", "chèvre"
     ]
 
     # Nettoyage des textes OCR
@@ -153,7 +153,7 @@ def create_submission(cfg):
                 pd.DataFrame({"id": image_names, "label": preds}),
             ]
         )
-    submission.to_csv(f"{cfg.root_dir}/submission_dreambooth_OCR_V2.csv", index=False)
+    submission.to_csv(f"{cfg.root_dir}/submission.csv", index=False)
 
 
 if __name__ == "__main__":

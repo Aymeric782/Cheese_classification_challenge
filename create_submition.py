@@ -59,7 +59,7 @@ def create_submission(cfg):
                 pd.DataFrame({"id": image_names, "label": preds}),
             ]
         )
-    submission.to_csv(f"{cfg.root_dir}/submission_dreambooth.csv", index=False)
+    submission.to_csv(f"{cfg.root_dir}/submission.csv", index=False)
 
 
 if __name__ == "__main__":
